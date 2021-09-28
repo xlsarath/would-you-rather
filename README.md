@@ -1,5 +1,6 @@
-#preview
-![Alt text](demo.gif) / ![](demo.gif)
+# Preview
+
+![Alt text](demo.gif) / 
 
 # Getting Started with Create React App
 
