@@ -11,10 +11,10 @@ export default function users(state = {}, action) {
 		case ADD_QUESTION_ANSWER: {
 			return {
 				...state,
-				[action.authedUser]: {
-					...state[action.authedUser],
+				[action.authenticatedUser]: {
+					...state[action.authenticatedUser],
 					answers: {
-						...state[action.authedUser].answers,
+						...state[action.authenticatedUser].answers,
 						[action.qid]: action.answer,
 					},
 				},

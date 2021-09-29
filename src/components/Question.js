@@ -23,7 +23,7 @@ class Question extends Component {
 		dispatch(handleAddQuestionAnswer(id, selected));
 	};
 	render() {
-		const { authedUserDetails, question, author, id, detailed } = this.props;
+		const { authenticatedUserDetails, question, author, id, detailed } = this.props;
 
 		if (!question) {
 			return <Redirect to="/404" />;
@@ -65,10 +65,10 @@ class Question extends Component {
 									</div>
 								)}
 
-								{authedUserDetails.answers[question.id] ? (
+								{authenticatedUserDetails.answers[question.id] ? (
 									<div style={{ padding: "10px" }}>
 										Choosed:
-										{question[authedUserDetails.answers[question.id]].text}
+										{question[authenticatedUserDetails.answers[question.id]].text}
 										{detailed && (
 											<div style={{ padding: "10px" }}>
 												Results:
@@ -144,15 +144,15 @@ class Question extends Component {
 	}
 }
 
-function mapStateToProps({ authedUser, users, questions }, { id }) {
+function mapStateToProps({ authenticatedUser, users, questions }, { id }) {
 	const question = questions[id];
 	const author = question ? users[question.author] : "";
-	const authedUserDetails = users[authedUser];
+	const authenticatedUserDetails = users[authenticatedUser];
 
 	return {
 		question,
 		author,
-		authedUserDetails,
+		authenticatedUserDetails,
 	};
 }
 

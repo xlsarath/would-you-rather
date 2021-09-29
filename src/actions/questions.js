@@ -19,10 +19,10 @@ export function addQuestion(question) {
 	};
 }
 
-export function addQuestionAnswer(authedUser, qid, answer) {
+export function addQuestionAnswer(authenticatedUser, qid, answer) {
 	return {
 		type: ADD_QUESTION_ANSWER,
-		authedUser,
+		authenticatedUser,
 		qid,
 		answer,
 	};
@@ -30,14 +30,14 @@ export function addQuestionAnswer(authedUser, qid, answer) {
 
 export function handleAddQuestion(optionOneText, optionTwoText) {
 	return (dispatch, getState) => {
-		const { authedUser } = getState();
+		const { authenticatedUser } = getState();
 
 		dispatch(showLoading());
 
 		return saveQuestion({
 			optionOneText,
 			optionTwoText,
-			author: authedUser,
+			author: authenticatedUser,
 		})
 			.then((question) => dispatch(addQuestion(question)))
 			.then(() => dispatch(hideLoading()));
@@ -46,16 +46,16 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
 
 export function handleAddQuestionAnswer(qid, answer) {
 	return (dispatch, getState) => {
-		const { authedUser } = getState();
+		const { authenticatedUser } = getState();
 
 		dispatch(showLoading());
 
 		return saveQuestionAnswer({
-			authedUser,
+			authenticatedUser,
 			qid,
 			answer,
 		})
-			.then(() => dispatch(addQuestionAnswer(authedUser, qid, answer)))
+			.then(() => dispatch(addQuestionAnswer(authenticatedUser, qid, answer)))
 			.then(() => dispatch(hideLoading()));
 	};
 }

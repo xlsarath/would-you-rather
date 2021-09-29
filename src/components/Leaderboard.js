@@ -42,7 +42,7 @@ class Leaderboard extends Component {
 	}
 }
 
-function mapStateToProps({ authedUser, users, questions }) {
+function mapStateToProps({ authenticatedUser, users, questions }) {
 	const leaderboardData = Object.keys(users)
 		.map((user) => ({
 			id: user,
@@ -54,7 +54,7 @@ function mapStateToProps({ authedUser, users, questions }) {
 		.sort((a, b) => b.answeredQuestions + b.createdQuestions - (a.answeredQuestions + a.createdQuestions));
 
 	return {
-		authedUser,
+		authenticatedUser,
 		leaderboardData,
 	};
 }

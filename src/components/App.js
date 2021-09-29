@@ -37,13 +37,13 @@ class App extends Component {
 					<Route render={() => <Signin />} />
 				) : (
 					<Fragment>
-						<Navbar authedUser={this.props.authedUser} />
+						<Navbar authenticatedUser={this.props.authenticatedUser} />
 						<Switch>
 							<Route path="/" exact component={Dashboard} />
 							<Route path="/questions/:id" component={QuestionDetails} />
 							<Route path="/add" component={NewQuestion} />
 							<Route path="/leaderboard" component={Leaderboard} />
-							<Route path="/error" component={Error} />
+							<Route path="/404" component={Error} />
 						</Switch>
 					</Fragment>
 				)}
@@ -52,10 +52,10 @@ class App extends Component {
 	}
 }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authenticatedUser }) {
 	return {
-		loading: authedUser === null,
-		authedUser,
+		loading: authenticatedUser === null,
+		authenticatedUser,
 	};
 }
 
